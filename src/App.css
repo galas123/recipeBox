@@ -3,7 +3,7 @@
   height: 300px;
   border: 1px solid #ccc;
   padding: 20px;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 .caption{
   margin: 0 auto;
@@ -50,4 +50,22 @@
   border: none;
   background-color: #fff;
   outline: none;
+}
+.add-recipe-button{
+  display: block;
+  font-size:20px;
+  color:slategrey;
+  background-color:#fff;
+  border-radius:5px;
+  width:50px;
+  margin: 20px auto 0;
+}
+
+.search{
+  margin: 25px auto;
+  display: block;
+  border-radius: 5px;
+  font-size: 20px;
+  padding-left: 30px;
+  line-height: 30px;
 }

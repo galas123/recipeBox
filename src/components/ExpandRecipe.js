@@ -23,7 +23,7 @@ class ExpandedRecipe extends Component {
        </button>
         <div className="ingredients-frame">
           {listIngredients}
-        </div>clickTrash
+        </div>
         </div>
     );
   }

@@ -1,4 +1,4 @@
-import {SHOW_RECIPE, DELETE_RECIPE} from '../constants';
+import {SHOW_RECIPE, DELETE_RECIPE, SEARCH} from '../constants';
 
 import {Map, List}  from 'immutable';
 
@@ -24,7 +24,8 @@ const defaultState = Map({
       ingredients: List(['flavour', '3 apples', '4 eggs', 'butter', 'sugar'])
     }
   ]),
-  selectedRecipe:null
+  selectedRecipe:null,
+  filterTerm:''
 });
 
 export default (state = defaultState, action) => {
@@ -36,8 +37,11 @@ export default (state = defaultState, action) => {
 
     case DELETE_RECIPE:
       const deletingRecipe=state.get('recipes').findIndex((item,index)=>(item.id===payload));
-
       return state.deleteIn(['recipes',deletingRecipe]);
+
+    case SEARCH:
+      return state.setIn(['filterTerm'], payload);
   };
+  
   return state;
 }

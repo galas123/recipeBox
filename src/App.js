@@ -5,6 +5,10 @@ import './App.css';
 
 import CollapsedRecipe from './components/CollapsedRecipe';
 import ExpandedRecipe from './components/ExpandRecipe';
+import AddRecipe from './components/AddRecipe';
+import SearchBar from './components/SearchBar';
+
+import {visibleRecipesSelector} from './selectors';
 
 class App extends Component {
   render() {
@@ -19,6 +23,8 @@ class App extends Component {
     return (
       <div className="recipes-frame">
         <h1 className="caption">Recipe Box </h1>
+        <AddRecipe/>
+        <SearchBar/>
         <div className="box">
           {listRecipes}
         </div>
@@ -28,7 +34,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state=> ({
-    recipes: state.recipes.get('recipes'),
+    recipes: visibleRecipesSelector(state),
     selectedRecipe: state.recipes.get('selectedResipe')
   });
 
