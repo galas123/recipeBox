@@ -20,7 +20,7 @@ class CollapsedRecipe extends Component {
   onClick = (ev) => {
     const {showRecipe, recipe}=this.props;
     ev.preventDefault();
-    showRecipe(recipe);
+    showRecipe(recipe.id);
   };
   
 }

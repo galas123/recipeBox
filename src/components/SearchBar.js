@@ -1,6 +1,8 @@
 import React, {
   Component
 } from 'react';
+import Search from 'react-icons/lib/fa/search';
+
 import {connect} from 'react-redux';
 
 import {search} from '../AC/search';
@@ -8,7 +10,10 @@ import {search} from '../AC/search';
 class SearchBar extends Component {
   render() {
     return (
-      <input className="search" type="search" placeholder="search.." onChange="this.onChange"/>
+      <div className="search-wrapper">
+        <Search className="search"/>
+      <input className="search-bar" type="search" placeholder="search.." onChange={this.onChange}/>
+        </div>
     );
   }
 

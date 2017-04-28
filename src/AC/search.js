@@ -1,6 +1,6 @@
 import {SEARCH} from '../constants';
 
-export const addRecipe = (content) =>
+export const search = (content) =>
   ({
     type   : SEARCH,
     payload: content

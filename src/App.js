@@ -8,14 +8,14 @@ import ExpandedRecipe from './components/ExpandRecipe';
 import AddRecipe from './components/AddRecipe';
 import SearchBar from './components/SearchBar';
 
-import {visibleRecipesSelector} from './selectors';
+import {visibleRecipesSelector, selectedRecipeSelector} from './selectors';
 
 class App extends Component {
   render() {
     const {recipes, selectedRecipe}=this.props;
     const listRecipes = recipes.map((recipe) => {
         if (selectedRecipe && selectedRecipe.id === recipe.id) {
-          return <ExpandedRecipe recipe={selectedRecipe} key={recipe.name}/>
+          return <ExpandedRecipe recipe={recipe} key={recipe.name}/>
         }
         return <CollapsedRecipe recipe={recipe} key={recipe.name}/>
       }
@@ -35,7 +35,7 @@ class App extends Component {
 
 const mapStateToProps = state=> ({
     recipes: visibleRecipesSelector(state),
-    selectedRecipe: state.recipes.get('selectedResipe')
+    selectedRecipe: selectedRecipeSelector(state)
   });
 
 export default connect(mapStateToProps, null)(App);

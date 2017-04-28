@@ -6,15 +6,17 @@ import {connect} from 'react-redux';
 import Trash from 'react-icons/lib/fa/trash';
 
 import {deleteRecipe} from '../AC/deleteRecipe';
+import {editIngredient} from '../AC/editIngredient';
 
 import '../App.css';
 
 class ExpandedRecipe extends Component {
+  
   render() {
     const {recipe}=this.props;
-    console.log(recipe.ingredients);
-    const listIngredients=recipe.ingredients.map((item)=>
-      (<input className="ingredient" key={item} value={item}/>));
+    console.log('render',recipe.ingredients);
+    const listIngredients=recipe.ingredients.map((item,index)=>
+      (<input className="ingredient" key={index} value={item} onChange={this.editIngredient(index)}/>));
     return (
       <div>
       <input className="expanded-recipe-name" value={recipe.name}/>
@@ -33,6 +35,13 @@ class ExpandedRecipe extends Component {
     ev.preventDefault();
     deleteRecipe(recipe.id);
   }
+
+  editIngredient = index=> ev => {
+    const {recipe, editIngredient}=this.props;
+    ev.preventDefault();
+    editIngredient(ev.target.value, index, recipe.id);
+    
+  }
 }
 
-export default connect(null, {deleteRecipe})(ExpandedRecipe);
+export default connect(null, {deleteRecipe, editIngredient})(ExpandedRecipe);
