@@ -3,3 +3,4 @@ export const DELETE_RECIPE='DELETE_RECIPE';
 export const ADD_RECIPE='ADD_RECIPE';
 export const SEARCH='SEARCH'
 export const EDIT_INGREDIENT='EDIT_INGREDIENT'
+export const SAVE_NEW_RECIPE='SAVE_NEW_RECIPE'

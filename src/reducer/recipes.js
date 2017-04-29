@@ -1,4 +1,4 @@
-import {SHOW_RECIPE, DELETE_RECIPE, SEARCH, EDIT_INGREDIENT} from '../constants';
+import {SHOW_RECIPE, DELETE_RECIPE, SEARCH, EDIT_INGREDIENT, SAVE_NEW_RECIPE} from '../constants';
 
 import {Map, List}  from 'immutable';
 
@@ -32,7 +32,6 @@ const defaultState = Map({
 export default (state = defaultState, action) => {
   const {type, payload} = action;
   switch (type) {
-
     case SHOW_RECIPE:
       return state.setIn(['selectedRecipeId'], payload);
 
@@ -74,6 +73,19 @@ export default (state = defaultState, action) => {
         }
       );
       return newState;
+
+    case SAVE_NEW_RECIPE:
+      const {newRecipeName, newRecipeIngredients}=payload;
+      const newID=Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+            console.log('генерация ID', newID);
+      const recipesWithNewRecipe = state.get('recipes').push(
+        {
+          id         : newID,
+          name       : newRecipeName,
+          ingredients: List(newRecipeIngredients.split(',')).push('')
+        })
+      console.log('state', recipesWithNewRecipe);
+      return state.set('recipes',recipesWithNewRecipe);
   }
   return state;
 }
