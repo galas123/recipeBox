@@ -1,30 +1,15 @@
 import React, {
   Component
 } from 'react';
-import {connect} from 'react-redux';
 
-import {showRecipe} from '../AC/showRecipe';
-
-class CollapsedRecipe extends Component {
+export default class CollapsedRecipe extends Component {
   render() {
-    const {recipe}=this.props;
+    const {recipe, onClick}=this.props;
     return (
-      <div>
-      <button className="collapsed-recipe" onClick={this.onClick}>
+      <button className="collapsed-recipe" onClick={onClick}>
         {recipe.name}
       </button>
-        </div>
     );
   }
-
-  onClick = (ev) => {
-    const {showRecipe, recipe}=this.props;
-    ev.preventDefault();
-    showRecipe(recipe.id);
-  };
-  
 }
-
-
-export default connect(null, {showRecipe})(CollapsedRecipe);
 

@@ -1,30 +1,12 @@
 import {SHOW_RECIPE, DELETE_RECIPE, SEARCH, EDIT_INGREDIENT, SAVE_NEW_RECIPE} from '../constants';
 
 import {Map, List}  from 'immutable';
-
+console.log('local storage',localStorage.getItem('recipes'));
+const newRecipes=JSON.parse(localStorage.getItem('recipes')).map((recipe)=>
+  ({... recipe, ingredients: List(recipe.ingredients)})
+);
 const defaultState = Map({
-  recipes       : List([
-    {
-      id         : 1234,
-      name       : 'cottage cheese cookies',
-      ingredients: List(['cottage cheese', 'sugar', 'butter', '1 egg', 'vanilla', ''])
-    },
-    {
-      id         : 1235,
-      name       : 'pilaf',
-      ingredients: List(['carrots', 'onions', 'rice', 'beef meet', 'shafran', ''])
-    },
-    {
-      id         : 1236,
-      name       : 'paella',
-      ingredients: List(['carrots', 'onions', 'rice', 'beef meet', 'shafran', ''])
-    },
-    {
-      id         : 1237,
-      name       : 'sharlotka',
-      ingredients: List(['flavour', '3 apples', '4 eggs', 'butter', 'sugar', ''])
-    }
-  ]),
+  recipes       : List(newRecipes),
   selectedRecipeId: null,
   filterTerm    : ''
 });
@@ -33,6 +15,9 @@ export default (state = defaultState, action) => {
   const {type, payload} = action;
   switch (type) {
     case SHOW_RECIPE:
+      if (state.get('selectedRecipeId')===payload){
+        return state.setIn(['selectedRecipeId'], null);
+      }
       return state.setIn(['selectedRecipeId'], payload);
 
     case DELETE_RECIPE:
