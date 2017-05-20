@@ -2,6 +2,7 @@ import React, {
   Component
 } from 'react';
 
+import Button from '../components/Button';
 import RecipeWindow from '../components/RecipeWindow';
 
 export default class AddRecipe extends Component {
@@ -11,9 +12,7 @@ export default class AddRecipe extends Component {
     const modalWin = isOpen ? <RecipeWindow clickCancel={clickCancel} clickSubmit={clickSubmit}/>:null;
     return (
       <div>
-        <button className="add-recipe-button" onClick={addButtonClick}>
-          add
-        </button>
+        <Button className="add-recipe__button" clickFunction={addButtonClick} text="add"/>
         {modalWin}
       </div>
     );

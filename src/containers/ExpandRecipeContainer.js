@@ -15,16 +15,13 @@ class ExpandedRecipeContainer extends Component {
 
   render() {
     const {recipe}=this.props;
-    const listIngredients=recipe.ingredients.map((item,index)=>
-      (<input className="ingredient" key={index} value={item} onChange={this.editIngredient(index)}/>));
     return (
-      <ExpandedRecipe recipe={recipe} listIngredients={listIngredients} clickTrash={this.clickTrash} clickRecipe={this.clickRecipe} />
+      <ExpandedRecipe recipe={recipe} editIngredient={this.editIngredient} clickTrash={this.clickTrash} clickRecipe={this.clickRecipe} />
     );
   }
 
-  clickTrash=(ev)=>{
+  clickTrash=()=>{
     const {recipe, deleteRecipe}=this.props;
-    ev.preventDefault();
     deleteRecipe(recipe.id);
   };
 

@@ -17,7 +17,6 @@ class CollapsedRecipeContainer extends Component {
 
   onClick = (ev) => {
     const {showRecipe, recipe}=this.props;
-    ev.preventDefault();
     showRecipe(recipe.id);
   };
 

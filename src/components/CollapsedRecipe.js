@@ -1,14 +1,13 @@
 import React, {
   Component
 } from 'react';
+import Button from '../components/Button';
 
 export default class CollapsedRecipe extends Component {
   render() {
     const {recipe, onClick}=this.props;
     return (
-      <button className="collapsed-recipe" onClick={onClick}>
-        {recipe.name}
-      </button>
+      <Button className="collapsed-recipe__button" text={recipe.name} clickFunction={onClick}/>
     );
   }
 }

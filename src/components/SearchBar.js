@@ -7,9 +7,9 @@ import Search from 'react-icons/lib/fa/search';
 export default class SearchBar extends Component {
   render() {
     const {onChange}=this.props;
-    return <div className="search-wrapper">
+    return <div className="search-bar__wrapper">
       <Search className="search"/>
-      <input className="search-bar" type="search" placeholder="search.." onChange={onChange}/>
+      <input className="search-bar__input" type="search" placeholder="search.." onChange={onChange}/>
     </div>;
   }
 }

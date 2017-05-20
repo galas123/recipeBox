@@ -27,7 +27,6 @@ class AddRecipeContainer extends Component {
     )
   }
   addButtonClick = (ev) => {
-  ev.preventDefault();
   this.setState({isOpen: true});
 };
 
@@ -44,8 +43,7 @@ clickSubmit = (newRecipeName, newRecipeIngredients)=> {
   this.setState({isOpen: false});
 }
 
-clickCancel=ev => {
-  ev.preventDefault();
+clickCancel=() => {
   this.setState({isOpen: false});
 }
 }
